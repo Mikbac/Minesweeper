@@ -90,7 +90,7 @@ else:
 
 
 
-X_data2 = np.genfromtxt('data/225.csv', dtype=int, delimiter=',')
+X_data2 = np.genfromtxt('data/155.csv', dtype=int, delimiter=',')
 y_test_pred2 = nn.predict(X_data2)
 miscl_lab2 = y_test_pred2
 if(miscl_lab2[1] == 1):
@@ -99,6 +99,20 @@ else:
 	print('nothing')
 	
 # nothing	
+
+
+
+X_data2 = np.genfromtxt('data/225.csv', dtype=int, delimiter=',')
+y_test_pred2 = nn.predict(X_data2)
+miscl_lab2 = y_test_pred2
+if(miscl_lab2[1] == 1):
+	print('bomb')
+else:
+	print('nothing')
+
+# nothing
+
+
 
 
 #--------data_visualisation--------
