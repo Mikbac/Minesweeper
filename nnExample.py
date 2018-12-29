@@ -98,7 +98,7 @@ if(miscl_lab2[1] == 1):
 else:
 	print('nothing')
 	
-# bomb	
+# nothing	
 
 
 #--------data_visualisation--------
