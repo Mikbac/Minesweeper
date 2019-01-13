@@ -160,3 +160,17 @@ class NeuralNet(object):
                 delta_w1_prev, delta_w2_prev = delta_w1, delta_w2
 
         return self
+
+
+    def detection(self, nn, number):
+        X_data = np.genfromtxt('data/'+str(number)+'.csv', dtype=int, delimiter=',')
+        y_test_pred = nn.predict(X_data)
+        miscl_lab = y_test_pred
+        if(miscl_lab[1] == 1):
+            print(str(number)+' -> bomb')
+            return 1
+        else:
+            print(str(number)+' -> nothing')
+            return 0
+    
+    
