@@ -78,5 +78,38 @@ TestScore=[0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 clf = tree.DecisionTreeClassifier()
 clf = clf.fit(Tests,TestScore)
-# wywołanie : clf.predict([[0,0,0,0,0,0,0]])
+#Generator warunków
+Condition1=randint(0,30)
+if (Condition1==0):
+    Condition1=1
+else: Condition1=0
+Condition2=randint(0,30)
+if (Condition2==0):
+    Condition2=1
+else: Condition2=0   
+Condition3=randint(0,30)
+if (Condition3==0):
+    Condition3=1
+else: Condition3=0   
+Condition4=randint(0,30)
+if (Condition4==0):
+    Condition4=1
+else: Condition4=0    
+Condition5=randint(0,1)
+if (Condition5==0):
+    Condition5=1
+else: Condition5=0    
+Condition6=randint(0,30)
+if (Condition6==0):
+    Condition6=1
+else: Condition6=0    
+Condition7=randint(0,1)
+if (Condition7==0):
+    Condition7=1
+else: Condition7=0
+
+
+
+# wywołanie : clf.predict([[Condition1,Condition2,Condition3,Condition4,Condition5,Condition6,Condition7]])
 # output: 0-wróć później, 1-rozbrajaj
+
