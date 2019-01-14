@@ -18,9 +18,9 @@ print('\nRzedy: %d, kolumny: %d' % (X_train.shape[0], X_train.shape[1]))
 # l2=0.1 - parametr regularyzacji, pozwalajacy na zmniejszenie stopnia przetrenowania
 # l1=0.0 - 
 # epochs=1000 - liczba przebiegow algorytmu po zestawie danych uczacych 
-# eta=0.001 - wspołczynnik uczenia
+# eta=0.001 - wspolczynnik uczenia
 # alpha=0.001 - parametr dla uczenia momentowego
-# decrease_const=0.00001 - stała redukcji d stanowiaca element adaptacyjnego wspołczynnika uczenia n
+# decrease_const=0.00001 - stala redukcji d stanowiaca element adaptacyjnego wspolczynnika uczenia n
 # shuffle=True - przed kazda epoka testujemy zestaw danycz uczacych
 # minibatches=50 - rozdzielenie danycz uczacych na k podzbiorow w kazdej epoce
 # random_state=1 - wartosc losowa
