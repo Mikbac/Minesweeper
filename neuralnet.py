@@ -169,8 +169,10 @@ class NeuralNet(object):
         if(miscl_lab[1] == 1):
             print(str(number)+' -> bomb')
             return 1
-        else:
+        elif(miscl_lab[1] == 2):
+            print(str(number)+' -> dynamite')
+            return 2
+        elif(miscl_lab[1] == 0):
             print(str(number)+' -> nothing')
             return 0
-    
     
