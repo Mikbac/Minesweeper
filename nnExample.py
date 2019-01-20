@@ -5,10 +5,14 @@ import struct
 import numpy as np
 import sys
 
+# --------data--------
+
 X_train = np.genfromtxt('data/img_lear.csv', dtype=int, delimiter=',')
 y_train = np.genfromtxt('data/le_lear.csv', dtype=int, delimiter=',')
 X_test = np.genfromtxt('data/img_test.csv', dtype=int, delimiter=',')
 y_test = np.genfromtxt('data/le_test.csv', dtype=int, delimiter=',')
+
+# --------end-data--------
 
 print('\nRzedy: %d, kolumny: %d' % (X_train.shape[0], X_train.shape[1]))
 
@@ -25,12 +29,12 @@ print('\nRzedy: %d, kolumny: %d' % (X_train.shape[0], X_train.shape[1]))
 # minibatches=50 - rozdzielenie danycz uczacych na k podzbiorow w kazdej epoce
 # random_state=1 - wartosc losowa
 
-#--------learning--------
+# --------learning--------
 
 nn = NeuralNet(n_output = 3, n_features=X_train.shape[1], n_hidden=50, l2=0.1, l1=0.0, epochs=500, eta=0.001, alpha=0.001, decrease_const=0.00001, shuffle=True, minibatches=50, random_state=1)
 nn.fit(X_train, y_train, print_progress=True)
 
-#--------end-learning--------
+# --------end-learning--------
 
 
 
@@ -38,7 +42,7 @@ print('\n')
 
 
 
-#--------examples-type-1--------
+# --------examples-type-1--------
 ##-1-
 print(nn.detection(nn, 20))
 # return 1
@@ -111,10 +115,10 @@ print(nn.detection(nn, 44))
 print(nn.detection(nn, 199))
 # return 0
 
-#--------end-examples-type-1--------
+# --------end-examples-type-1--------
 
 
-#--------data-visualisation-bomb--------
+# --------data-visualisation-bomb--------
 # 2 - dynamite
 # 1 - bomb
 # 0 - nothing
@@ -127,10 +131,10 @@ ax[0].set_xticks([])
 ax[0].set_yticks([])
 plt.tight_layout()
 plt.show()
-#--------end-data_visualisation--------
+# --------end-data-visualisation-bomb--------
 
 
-#--------data-visualisation-dynamite--------
+# --------data-visualisation-dynamite--------
 # 2 - dynamite
 # 1 - bomb
 # 0 - nothing
@@ -143,14 +147,14 @@ ax[0].set_xticks([])
 ax[0].set_yticks([])
 plt.tight_layout()
 plt.show()
-#--------end-data_visualisation--------
+# --------end-data-visualisation-dynamite--------
 
 
-#--------data-plot--------
+# --------data-plot--------
 plt.plot(range(len(nn.cost_)), nn.cost_)
-plt.ylim([0, 500])
+plt.ylim([0, 2500])
 plt.ylabel('Koszt')
 plt.xlabel('Epoki')
 plt.tight_layout()
 plt.show()
-#--------end-data_visualisation--------
+# --------end-data-plot--------
