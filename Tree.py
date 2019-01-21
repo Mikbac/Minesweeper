@@ -110,7 +110,15 @@ class DecisionTree():
         if (Condition7==0):
             Condition7=1
         else: Condition7=0
-
+        
+        print("Czy cywile: %d" % Condition1)
+        print("Czy śnieżyca: %d" % Condition2)
+        print("Czy burza: %d" % Condition3)
+        print("Czy deszcz: %d" % Condition4)
+        print("Czy wymaga rozbrojenia: %d" % Condition5)
+        print("Czy saper posiada wystarczające umiejętności: %d" % Condition6)
+        print("Czy jest w stanie rozbroić pomimo braku umiejętności: %d" % Condition7)
+            
         return clf.predict([[Condition1,Condition2,Condition3,Condition4,Condition5,Condition6,Condition7]])[0]
 
 # output: 0-wróć później, 1-rozbrajaj
