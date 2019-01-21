@@ -114,7 +114,7 @@ class DecisionTree():
         print("Czy cywile: %d" % Condition1)
         print("Czy śnieżyca: %d" % Condition2)
         print("Czy burza: %d" % Condition3)
-        print("Czy deszcz: %d" % Condition4)
+        print("Czy wichura: %d" % Condition4)
         print("Czy wymaga rozbrojenia: %d" % Condition5)
         print("Czy saper posiada wystarczające umiejętności: %d" % Condition6)
         print("Czy jest w stanie rozbroić pomimo braku umiejętności: %d" % Condition7)
