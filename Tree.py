@@ -81,7 +81,7 @@ class DecisionTree():
 
         clf = tree.DecisionTreeClassifier()
         clf = clf.fit(Tests,TestScore)
-        #Generator warunków
+
         Condition1=randint(0,30)
         if (Condition1==0):
             Condition1=1
@@ -110,16 +110,17 @@ class DecisionTree():
         if (Condition7==0):
             Condition7=1
         else: Condition7=0
-        
+
         print("Czy cywile: %d" % Condition1)
-        print("Czy śnieżyca: %d" % Condition2)
+        print("Czy sniezyca: %d" % Condition2)
         print("Czy burza: %d" % Condition3)
         print("Czy wichura: %d" % Condition4)
         print("Czy wymaga rozbrojenia: %d" % Condition5)
-        print("Czy saper posiada wystarczające umiejętności: %d" % Condition6)
-        print("Czy jest w stanie rozbroić pomimo braku umiejętności: %d" % Condition7)
-            
+        print("Czy saper posiada wystarczajace umiejetnosci: %d" % Condition6)
+        print("Czy jest w stanie rozbroic pomimo braku umiejetnosci: %d" % Condition7)
+        print("Czy ostatecznie rozbrajamy?: %d" % clf.predict([[Condition1,Condition2,Condition3,Condition4,Condition5,Condition6,Condition7]])[0])
+
         return clf.predict([[Condition1,Condition2,Condition3,Condition4,Condition5,Condition6,Condition7]])[0]
 
-# output: 0-wróć później, 1-rozbrajaj
+# output: 0-come later, 1-defuse the bomb
 

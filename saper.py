@@ -2,6 +2,7 @@ from nnExample import nn
 from treeExample import clf
 import time
 import pygame
+from os import path
 
 from collections import deque
 
@@ -244,7 +245,10 @@ graph = {'0 0': set(['0 1', '1 0']),
          '14 12': set(['13 12', '14 11', '14 13']),
          '14 13': set(['13 13', '14 12', '14 14']),
          '14 14': set(['14 13', '13 14', ])}
-
+# 1 - grass - green
+# 2 - bomb - red
+# 3 - dynamite - orange
+# 4 - disarmed bomb - blue
 
 def paint_picture():
     for row in range(15):
@@ -253,17 +257,26 @@ def paint_picture():
             color = WHITE
             if grid[row][column] == 1:
                 color = GREEN
+            elif grid[row][column] == 2:
+                color = RED
+            elif grid[row][column] == 3:
+                color = ORANGE
+            elif grid[row][column] == 4:
+                color = BLUE
             pygame.draw.rect(screen,
                              color,
                              [(MARGIN + WIDTH) * column + MARGIN,
                               (MARGIN + HEIGHT) * row + MARGIN,
                               WIDTH,
                               HEIGHT])
+
+
     pygame.display.flip()
 
 
 def bfs(graph, start):
     visited, queue = set(), [start]
+    global grid
     while queue:
         vertex = queue.pop(0)
         if vertex not in visited:
@@ -717,15 +730,20 @@ def bfs(graph, start):
                 answer = nn.detection(nn, 224)
             elif vertex == "14 14":
                 answer = nn.detection(nn, 225)
-            print("answer = " + str(answer)+ " - " + vertex)
             paint_picture()
             if (answer == 1) or (answer == 2):
+                if answer == 1:
+                    grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 2
+                elif answer == 2:
+                    grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 3
                 if clf.test() == 1:
                     visited.add(vertex)
+                    grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 4
+                else:
+                    queue.append(vertex)
             elif answer == 0:
                 visited.add(vertex)
-                global grid
-                grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])]=1
+                grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 1
             print(vertex)
             queue.extend(graph[vertex] - visited)
             time.sleep(.100)
@@ -738,6 +756,8 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
+ORANGE = (255, 165, 0)
+BLUE = (0, 0, 128)
 
 WIDTH = 20
 HEIGHT = 20

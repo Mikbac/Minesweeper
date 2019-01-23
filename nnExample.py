@@ -153,6 +153,7 @@ plt.show()
 # --------data-plot--------
 plt.plot(range(len(nn.cost_)), nn.cost_)
 plt.ylim([0, 2500])
+plt.xlim(0, 10000)
 plt.ylabel('Koszt')
 plt.xlabel('Epoki')
 plt.tight_layout()
