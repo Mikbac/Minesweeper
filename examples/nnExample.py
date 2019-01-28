@@ -65,75 +65,57 @@ print('\n')
 # --------examples-type-1--------
 ##-1-
 print(nn.detection(nn, 20))
-# return 1
 
 ##-2-
 print(nn.detection(nn, 30))
-# return 2
 
 ##-3-
 print(nn.detection(nn, 40))
-# return 1
 
 ##-4-
 print(nn.detection(nn, 60))
-# return 2
 
 ##-5-
 print(nn.detection(nn, 80))
-# return 1
 
 ##-6-
 print(nn.detection(nn, 90))
-# return 2
 
 ##-7-
 print(nn.detection(nn, 100))
-# return 1
 
 ##-8-
 print(nn.detection(nn, 120))
-# return 2
 
 ##-9-
 print(nn.detection(nn, 140))
-# return 1
 
 ##-10-
 print(nn.detection(nn, 150))
-# return 2
 
 ##-11-
 print(nn.detection(nn, 160))
-# return 1
 
 ##-12-
 print(nn.detection(nn, 180))
-# return 2
 
 ##-13-
 print(nn.detection(nn, 200))
-# return 1
 
 ##-14-
 print(nn.detection(nn, 210))
-# return 2
 
 ##-15-
 print(nn.detection(nn, 220))
-# return 1
 
 ##-16-
 print(nn.detection(nn, 123))
-# return 0
 
 ##-17-
 print(nn.detection(nn, 44))
-# return 0
 
 ##-18-
 print(nn.detection(nn, 199))
-# return 0
 
 # --------end-examples-type-1--------
 
