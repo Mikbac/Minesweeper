@@ -1,5 +1,5 @@
-from examples.nnExample import nn
-from examples.treeExample import clf
+from examplesOfTheDecisionTreeAndNeuralNetworks.nnExample import nn
+from examplesOfTheDecisionTreeAndNeuralNetworks.treeExample import clf
 import time
 import pygame
 
