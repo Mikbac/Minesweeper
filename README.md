@@ -12,3 +12,14 @@ Jeśli natrafi na bombę na podstawie wylosowanych okoliczności dokonuje rozpoz
  * Sieci neuronowe (neural networks)
  * Drzewa decyzyjne (decision tree)
  * Algorytm DFS (DFS algorithm)
+
+
+## Opis działania:
+###Przed uruchomieniem:
+![ex1](img/ex1.png)
+
+###W trakcie działania:
+![ex2](img/ex2.png)
+
+###Po zakończeniu działania:
+![ex3](img/ex3.png)
