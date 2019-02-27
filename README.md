@@ -15,11 +15,14 @@ Jeśli natrafi na bombę na podstawie wylosowanych okoliczności dokonuje rozpoz
 
 
 ## Opis działania:
-###Przed uruchomieniem:
+### Przed uruchomieniem:
+
 ![ex1](img/ex1.png)
 
-###W trakcie działania:
+### W trakcie działania:
+
 ![ex2](img/ex2.png)
 
-###Po zakończeniu działania:
+### Po zakończeniu działania:
+
 ![ex3](img/ex3.png)
