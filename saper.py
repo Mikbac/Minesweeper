@@ -1,7 +1,12 @@
+
+import time
+
+import pygame
+
 from examplesOfTheDecisionTreeAndNeuralNetworks.nnExample import nn
 from examplesOfTheDecisionTreeAndNeuralNetworks.treeExample import clf
-import time
-import pygame
+
+
 
 graph = {'0 0': set(['0 1', '1 0']),
          '0 1': set(['0 0', '0 2', '1 1']),
@@ -28,6 +33,7 @@ graph = {'0 0': set(['0 1', '1 0']),
          '1 6': set(['0 6', '1 5', '2 6', '1 7']),
          '1 7': set(['0 7', '1 6', '2 7', '1 8']),
          '1 8': set(['0 8', '1 7', '2 8', '1 9']),
+         '1 9': set(['0 9', '1 8', '2 9', '1 10']),
          '1 9': set(['0 9', '1 8', '2 9', '1 10']),
          '1 10': set(['0 10', '1 9', '2 10', '1 11']),
          '1 11': set(['0 11', '1 10', '2 11', '1 12']),
@@ -243,58 +249,59 @@ graph = {'0 0': set(['0 1', '1 0']),
          '14 13': set(['13 13', '14 12', '14 14']),
          '14 14': set(['14 13', '13 14', ])}
 
+
 # 1 - grass - green
 # 2 - bomb - red
 # 3 - dynamite - orange
 # 4 - disarmed bomb - blue
 
 def paint_picture():
-    for row in range(15):
-        pygame.event.get()
-        for column in range(15):
-            color = WHITE
-            if grid[row][column] == 1:
-                color = GREEN
-            elif grid[row][column] == 2:
-                color = RED
-            elif grid[row][column] == 3:
-                color = ORANGE
-            elif grid[row][column] == 4:
-                color = BLUE
-            pygame.draw.rect(screen,
-                             color,
-                             [(MARGIN + WIDTH) * column + MARGIN,
-                              (MARGIN + HEIGHT) * row + MARGIN,
-                              WIDTH,
-                              HEIGHT])
-    pygame.display.flip()
+	for row in range(15):
+		pygame.event.get()
+		for column in range(15):
+			color = WHITE
+			if grid[row][column] == 1:
+				color = GREEN
+			elif grid[row][column] == 2:
+				color = RED
+			elif grid[row][column] == 3:
+				color = ORANGE
+			elif grid[row][column] == 4:
+				color = BLUE
+			pygame.draw.rect(screen,
+			                 color,
+			                 [(MARGIN + WIDTH) * column + MARGIN,
+			                  (MARGIN + HEIGHT) * row + MARGIN,
+			                  WIDTH,
+			                  HEIGHT])
+	pygame.display.flip()
 
 
 def bfs(graph, start):
-    visited, queue = set(), [start]
-    global grid
-    while queue:
-        vertex = queue.pop(0)
-        if vertex not in visited:
-            answer = nn.detection(nn, ((int(vertex.split(' ', 1)[1])+1)+(int(vertex.split(' ', 1)[0])*15)))
-            paint_picture()
-            if (answer == 1) or (answer == 2):
-                if answer == 1:
-                    grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 2
-                elif answer == 2:
-                    grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 3
-                if clf.test() == 1:
-                    visited.add(vertex)
-                    grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 4
-                else:
-                    queue.append(vertex)
-            elif answer == 0:
-                visited.add(vertex)
-                grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 1
-            print(vertex)
-            queue.extend(graph[vertex] - visited)
-            time.sleep(.100)
-    return visited
+	visited, queue = set(), [start]
+	global grid
+	while queue:
+		vertex = queue.pop(0)
+		if vertex not in visited:
+			answer = nn.detection(nn, ((int(vertex.split(' ', 1)[1]) + 1) + (int(vertex.split(' ', 1)[0]) * 15)))
+			paint_picture()
+			if (answer == 1) or (answer == 2):
+				if answer == 1:
+					grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 2
+				elif answer == 2:
+					grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 3
+				if clf.test() == 1:
+					visited.add(vertex)
+					grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 4
+				else:
+					queue.append(vertex)
+			elif answer == 0:
+				visited.add(vertex)
+				grid[int(vertex.split(' ', 1)[0])][int(vertex.split(' ', 1)[1])] = 1
+			print(vertex)
+			queue.extend(graph[vertex] - visited)
+			time.sleep(.100)
+	return visited
 
 
 vec = pygame.math.Vector2
@@ -313,9 +320,9 @@ MARGIN = 5
 
 grid = []
 for row in range(15):
-    grid.append([])
-    for column in range(15):
-        grid[row].append(0)
+	grid.append([])
+	for column in range(15):
+		grid[row].append(0)
 
 grid[0][0] = 1
 
@@ -330,32 +337,29 @@ done = False
 
 clock = pygame.time.Clock()
 
-
 while not done:
-    for event in pygame.event.get():  # User did something
-        if event.type == pygame.QUIT:  # If user clicked close
-            done = True  # Flag that we are done so we exit this loop
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            for i in range(15):
-                for j in range(15):
-                    grid[i][j] = 0
-            # User clicks the mouse. Get the position
-            pos = pygame.mouse.get_pos()
-            bfs(graph, '0 0')
-            # Change the x/y screen coordinates to grid coordinates
-            column = pos[0] // (WIDTH + MARGIN)
-            row = pos[1] // (HEIGHT + MARGIN)
-            # Set that location to one
-            grid[row][column] = 1
-            print("Click ", pos, "Grid coordinates: ", row, column)
-            matrix = [[]]
+	for event in pygame.event.get():  # User did something
+		if event.type == pygame.QUIT:  # If user clicked close
+			done = True  # Flag that we are done so we exit this loop
+		elif event.type == pygame.MOUSEBUTTONDOWN:
+			for i in range(15):
+				for j in range(15):
+					grid[i][j] = 0
+			# User clicks the mouse. Get the position
+			pos = pygame.mouse.get_pos()
+			bfs(graph, '0 0')
+			# Change the x/y screen coordinates to grid coordinates
+			column = pos[0] // (WIDTH + MARGIN)
+			row = pos[1] // (HEIGHT + MARGIN)
+			# Set that location to one
+			grid[row][column] = 1
+			print("Click ", pos, "Grid coordinates: ", row, column)
+			matrix = [[]]
 
-    screen.fill(BLACK)
+	screen.fill(BLACK)
 
-    paint_picture()
+	paint_picture()
 
-    clock.tick(10)
-
+	clock.tick(10)
 
 # pygame.quit()
-
