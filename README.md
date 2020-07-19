@@ -1,4 +1,4 @@
-https://img.shields.io/github/license/Mikbac/Minesweeper
+![GitHub](https://img.shields.io/github/license/Mikbac/Minesweeper)
 
 # Automatyczny saper
 Zadaniem automatycznego sapera jest rozminowywanie terenu. Saper powinien rozpoznawać różne
